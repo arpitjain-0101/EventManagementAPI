@@ -1,0 +1,10 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/tests/EventManagement.Api.Tests/bin
+/tests/EventManagement.Api.Tests/obj
+/.vs
+/src/EventManagement.Api/bin
+/src/EventManagement.Api/Properties/PublishProfiles
+/src/EventManagement.Api/obj

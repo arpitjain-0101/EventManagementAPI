@@ -17,8 +17,24 @@ builder.Services.AddCors(options =>
         .AllowAnyHeader());
 });
 
-var redisConn = builder.Configuration["Redis:ConnectionString"] ?? "localhost:6379";
-builder.Services.AddSingleton<IConnectionMultiplexer>(_ => ConnectionMultiplexer.Connect(redisConn));
+var redisHost = builder.Configuration["Redis:Host"];
+var redisPort = builder.Configuration.GetValue<int?>("Redis:Port");
+var redisUser = builder.Configuration["Redis:User"];
+var redisPassword = builder.Configuration["Redis:Password"];
+
+if (string.IsNullOrWhiteSpace(redisHost) || redisPort is null or <= 0)
+{
+    throw new InvalidOperationException("Redis Host/Port configuration is missing or invalid.");
+}
+
+builder.Services.AddSingleton<IConnectionMultiplexer>(_ =>
+    ConnectionMultiplexer.Connect(
+        new ConfigurationOptions
+        {
+            EndPoints = { { redisHost, redisPort.Value } },
+            User = redisUser,
+            Password = redisPassword
+        }));
 
 builder.Services.AddScoped<IEventRepository, RedisEventRepository>();
 builder.Services.AddScoped<IRegistrationRepository, RedisRegistrationRepository>();
