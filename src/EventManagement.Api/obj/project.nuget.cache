@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "JD2VM9fYlXQ=",
+  "dgSpecHash": "Kc66Hi4jj3M=",
   "success": true,
-  "projectFilePath": "D:\\EventManagementApp\\backend\\src\\EventManagement.Api\\EventManagement.Api.csproj",
+  "projectFilePath": "D:\\GIT\\EventManagementAPI\\src\\EventManagement.Api\\EventManagement.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\atgra\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.5\\microsoft.aspnetcore.openapi.10.0.5.nupkg.sha512",
     "C:\\Users\\atgra\\.nuget\\packages\\microsoft.openapi\\2.0.0\\microsoft.openapi.2.0.0.nupkg.sha512",
@@ -16,9 +16,9 @@
       "code": "NU1903",
       "level": "Warning",
       "message": "Package 'Microsoft.OpenApi' 2.0.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-v5pm-xwqc-g5wc",
-      "projectPath": "D:\\EventManagementApp\\backend\\src\\EventManagement.Api\\EventManagement.Api.csproj",
+      "projectPath": "D:\\GIT\\EventManagementAPI\\src\\EventManagement.Api\\EventManagement.Api.csproj",
       "warningLevel": 1,
-      "filePath": "D:\\EventManagementApp\\backend\\src\\EventManagement.Api\\EventManagement.Api.csproj",
+      "filePath": "D:\\GIT\\EventManagementAPI\\src\\EventManagement.Api\\EventManagement.Api.csproj",
       "libraryId": "Microsoft.OpenApi",
       "targetGraphs": [
         "net10.0"
