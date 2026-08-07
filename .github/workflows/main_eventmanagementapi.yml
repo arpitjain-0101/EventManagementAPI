@@ -56,20 +56,19 @@ jobs:
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_99CADFEF571C4A83962533D63F5DF629 }}
 
       - name: Configure Azure Web App app settings
-        uses: azure/cli@v2
+        uses: azure/appservice-settings@v1
         with:
-          inlineScript: >
-            az webapp config appsettings set
-            --resource-group "${{ secrets.AZURE_RESOURCE_GROUP }}"
-            --name "EventManagementAPI"
-            --settings
-            Redis__Host="${{ secrets.REDIS_HOST }}"
-            Redis__Port="${{ secrets.REDIS_PORT }}"
-            Redis__User="${{ secrets.REDIS_USER }}"
-            Redis__Password="${{ secrets.REDIS_PASSWORD }}"
-            Redis__ConnectionString="${{ secrets.REDIS_CONNECTION_STRING }}"
-            Cors__AllowedOrigins__0="${{ secrets.CORS_ALLOWED_ORIGIN }}"
-            AllowedHosts="*"
+          app-name: 'EventManagementAPI'
+          app-settings-json: |
+            [
+              {"name":"Redis__Host","value":"${{ secrets.REDIS_HOST }}","slotSetting":false},
+              {"name":"Redis__Port","value":"${{ secrets.REDIS_PORT }}","slotSetting":false},
+              {"name":"Redis__User","value":"${{ secrets.REDIS_USER }}","slotSetting":false},
+              {"name":"Redis__Password","value":"${{ secrets.REDIS_PASSWORD }}","slotSetting":false},
+              {"name":"Redis__ConnectionString","value":"${{ secrets.REDIS_CONNECTION_STRING }}","slotSetting":false},
+              {"name":"Cors__AllowedOrigins__0","value":"${{ secrets.CORS_ALLOWED_ORIGIN }}","slotSetting":false},
+              {"name":"AllowedHosts","value":"*","slotSetting":false}
+            ]
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
